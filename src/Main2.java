@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Main2 {
     public static void main(String[] args) {
@@ -24,15 +25,15 @@ public class Main2 {
         return BTCK(cifras, resultado, operadores, sol, 0);
     }
 
-    private static boolean BTCK(ArrayList<Integer> cifras, int resultado, char[] operadores, int sol, int cont) {
+    public static boolean BTCK(ArrayList<Integer> cifras, int resultado, char[] operadores, int sol, int cont) {
         boolean res = false;
-        if(sol == resultado)
+        if(sol == resultado && cont >= cifras.size())
             res = true;
-        else {
+        else if(cont < cifras.size()) {
             int i = 0;
             int candidato = cifras.get(cont);
             cont++;
-            while(sol != resultado && cont < cifras.size() && !res && i < operadores.length) {
+            while(cont <= cifras.size() && !res && i < operadores.length) {
                 char operador = operadores[i];
                 int sol2 = sol;
 
